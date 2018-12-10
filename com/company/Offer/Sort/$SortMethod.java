@@ -27,7 +27,78 @@ public class $SortMethod {
             }
         }
     }
+    /*
+    * @description:
+    * 选择排序
+    * @author: ${USER}
+    * @create: ${DATE} ${TIME}
+    */
+    public void selectSort(int[] nums){
+        if(nums == null || nums.length<=0){
+            return;
+        }
+        int len = nums.length;
+        for(int i=0;i<len-1;i++){
+            int minIndex = i;
+            for(int j=i+1;j<len;j++){
+                if(nums[j]<nums[minIndex]){
+                    minIndex = j;
+                }
+            }
+            if(minIndex != i){
+                swap(nums,i,minIndex);
+            }
+        }
+    }
+    /*
+    * @description:
+    * 插入排序
+    * @author: ${USER}
+    * @create: ${DATE} ${TIME}
+    */
+    public void insertSort(int[] nums){
+        if(nums == null || nums.length <=0){
+            return;
+        }
+        int len = nums.length;
+        for(int i=1;i<len;i++){
+            int preindex = i-1;
+            int curValue = nums[i];
+            while (preindex>=0 && nums[preindex]>curValue){
+                nums[preindex+1] = nums[preindex];
+                preindex--;
+            }
+            nums[preindex+1] = curValue;
+        }
+    }
+    /*
+    * @description:
+    * 排序-希尔排序
+    * @author: ${USER}
+    * @create: ${DATE} ${TIME}
+    */
+    public void shellSort(int[] nums){
+        if(nums == null && nums.length<=0){
+            return;
+        }
+        int gap =1;
+        int len = nums.length;
+        while (gap <len/3){// 根据数组长度定义间隔序列
+            gap = gap*3+1;
+        }
 
+        for(int i=gap;i>0;i=i/3){
+            for(int j=gap;j<len;j++){
+                int tmp = nums[j];
+                int k = j-gap;
+                while (k>=0 && nums[k]>tmp){
+                    nums[k+gap]=nums[k];
+                    k=k-gap;
+                }
+                nums[k+gap]=tmp;
+            }
+        }
+    }
     private void swap(int[] nums, int j, int i) {
         int  temp = nums[i];
         nums[i] = nums[j];
