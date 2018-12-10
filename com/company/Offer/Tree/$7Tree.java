@@ -112,5 +112,36 @@ public class $7Tree {
             next = parent;
         }
         return next;
+    }/*
+    * @description:
+    * $27 二叉树镜像问题
+    * @author: ${USER}
+    * @create: ${DATE} ${TIME}
+    */
+    public void MirrorRecursively(Node node){
+        if(node == null){
+            return;
+        }
+        if(node.left == null && node.right == null){
+            return;
+        }
+
+        Node tmp = node.left;
+        node.left = node.right;
+        node.right = tmp;
+
+        if(node.left != null){
+            MirrorRecursively(node.left);
+        }
+        if(node.right != null){
+            MirrorRecursively(node.right);
+        }
     }
+    /*
+    * @description:
+    * ¥28 对称二叉树
+    * @author: ${USER}
+    * @create: ${DATE} ${TIME}
+    */
+
 }
