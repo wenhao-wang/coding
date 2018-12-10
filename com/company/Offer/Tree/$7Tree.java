@@ -143,5 +143,22 @@ public class $7Tree {
     * @author: ${USER}
     * @create: ${DATE} ${TIME}
     */
+    public boolean isSymmetrical(Node node){
+        return isSymmetrical(node ,node);
+    }
 
+    private boolean isSymmetrical(Node node, Node node1) {
+        if(node == null && node1 == null){
+            return true;
+        }
+        if(node == null || node == null){
+            return false;
+        }
+        if(node.data != node1.data){
+            return true;
+        }
+
+        return isSymmetrical(node.left,node1.right)
+                && isSymmetrical(node.right,node1.left);
+    }
 }
