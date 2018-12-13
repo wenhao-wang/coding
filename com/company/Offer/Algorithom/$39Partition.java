@@ -5,6 +5,8 @@ package com.company.Offer.Algorithom;/*
  * @create : 2018/12/14 上午12:00
  */
 
+import java.util.Arrays;
+
 public class $39Partition {
     /*
     * @description:
@@ -47,6 +49,29 @@ public class $39Partition {
         int temp = num[i];
         num[i] = num[i1];
         num[i1] = temp;
+    }
+    /*
+    * @description:
+    * 根据partition函数去的数组中最小的k个数
+    * @author: ${USER}
+    * @create: ${DATE} ${TIME}
+    */
+    public int[] getLeastNNumbers(int[] nums,int k){
+        int len = nums.length;
+        int start = 0;
+        int end = len-1;
+        int partition = getPartition(nums,start,end);
+        while(partition != k-1){
+            if(partition<k-1){
+                start = partition+1;
+                partition = getPartition(nums,start,end);
+            }else{
+                end = partition-1;
+                partition = getPartition(nums,start,end);
+            }
+        }
+        int[] res = Arrays.copyOfRange(nums,0,k-1);
+        return res;
     }
 
 }
