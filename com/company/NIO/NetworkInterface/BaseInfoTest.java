@@ -73,6 +73,10 @@ public class BaseInfoTest {
                     }
                     System.out.println();
                 }
+                System.out.println();
+                System.out.println("supportsMulticast 是否支持多地址广播="+
+                eachNetworkInterface.supportsMulticast());
+
                 System.out.println("---------------------");
 
 
